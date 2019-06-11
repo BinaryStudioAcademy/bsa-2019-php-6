@@ -21,15 +21,15 @@ php artisan key:generate
 * Реализовать класс `Product`.
 * Реализовать класс `ProductGenerator`.
 * Реализовать класс `ProductRepositoryInterface` и зарегистрировать в сервис контейнере Laravel.
-* Реализовать класс `Product/GetAllAction` и вернуть `Product/GetAllResponse` со всеми товарами.
-* Реализовать класс `Product/GetCheapestAction` и вернуть 3 наиболее дешевых товара, отсортированных по возростанию цены.
-* Реализовать класс `Product/GetMostPopularAction` и вернуть 3 наиболее популярных товара, отсортированных по убыванию рейтинга.
+* Реализовать класс `GetAllProductsAction` и вернуть `GetAllProductsResponse` со всеми товарами.
+* Реализовать класс `GetMostPopularProductAction` и вернуть `GetMostPopularProductResponse` c наиболее популярным товаром.
+* Реализовать класс `GetCheapestProductsAction` и вернуть `GetCheapestProductsResponse` с 3-мя наиболее дешевыми товарами, отсортированных по возростанию цены.
 
 #### Задание 2
 * Реализовать класс `ProductArrayPresenter`.
 * Реализовать маршрут `/api/products` в файле `routes/api.php`, по которому можно получить список всех товаров в формате json.
-* Реализовать маршрут `/api/products/cheap` в файле `routes/api.php`, по которому можно получить наиболее дешевые товары в формате json.
-* Реализовать маршрут `/products/popular` в файле `routes/web.php`, по которому можно получить наиболее популярные товары и отрендерить их во view `popular_products.blade.php`.
+* Реализовать маршрут `/api/products/popular` в файле `routes/api.php`, по которому можно получить наиболее популярный товар в формате json.
+* Реализовать маршрут `/products/cheap` в файле `routes/web.php`, по которому можно получить наиболее дешевые товары и отрендерить их во view `cheap_products.blade.php`.
 
 ### Проверка
 Свои решения можно проверить запустив тесты PHPUnit.

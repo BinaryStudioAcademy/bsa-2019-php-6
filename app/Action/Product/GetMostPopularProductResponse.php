@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Action\Product;
 
-class GetAllResponse
+class GetMostPopularProductResponse
 {
     // TODO: Implement methods
 }
