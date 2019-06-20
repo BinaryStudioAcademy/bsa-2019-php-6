@@ -20,7 +20,7 @@ php artisan key:generate
 #### Задание 1
 * Реализовать класс `Product`.
 * Реализовать класс `ProductGenerator`.
-* Реализовать класс `ProductRepositoryInterface` и зарегистрировать в сервис контейнере Laravel.
+* Реализовать интерфейс `ProductRepositoryInterface` и зарегистрировать в сервис контейнере Laravel.
 * Реализовать класс `GetAllProductsAction` и вернуть `GetAllProductsResponse` со всеми товарами.
 * Реализовать класс `GetMostPopularProductAction` и вернуть `GetMostPopularProductResponse` c наиболее популярным товаром.
 * Реализовать класс `GetCheapestProductsAction` и вернуть `GetCheapestProductsResponse` с 3-мя наиболее дешевыми товарами, отсортированных по возростанию цены.
