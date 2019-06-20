@@ -3,18 +3,24 @@
 namespace Tests\Task1;
 
 use App\Action\Product\GetAllProductsAction;
-use App\Action\Product\GetAllProductsResponse;
 use App\Action\Product\GetCheapestProductsAction;
-use App\Action\Product\GetCheapestProductsResponse;
 use App\Action\Product\GetMostPopularProductAction;
-use App\Action\Product\GetMostPopularProductResponse;
 use App\Entity\Product;
+use App\Repository\ProductRepository;
 use App\Repository\ProductRepositoryInterface;
 use Tests\TestCase;
 
 class Task1Test extends TestCase
 {
-	public function test_product_entity()
+	protected function setUp(): void
+	{
+		parent::setUp();
+		$this->app->bind(ProductRepositoryInterface::class, function () {
+			return new ProductRepository($this->getProducts());
+		});
+	}
+
+	public function test_product_entity(): void
 	{
 		$product = new Product(
 			1,
@@ -31,31 +37,28 @@ class Task1Test extends TestCase
 		$this->assertEquals(4.5, $product->getRating());
 	}
 
-	public function test_product_repository()
+	public function test_product_repository(): void
 	{
 		$repository = $this->app->make(ProductRepositoryInterface::class);
 		$products = $repository->findAll();
+
 		$this->assertNotEmpty($products);
 		$this->assertProductsData($products);
 	}
 
-	public function test_get_all_products_action()
+	public function test_get_all_products_action(): void
 	{
-		$repository = $this->createRepositoryMock();
-		$action = new GetAllProductsAction($repository);
+		$action = $this->app->make(GetAllProductsAction::class);
 		$response = $action->execute();
 
-		$this->assertInstanceOf(GetAllProductsResponse::class, $response);
 		$this->assertProductsData($response->getProducts());
 	}
 
-	public function test_get_cheapest_products_action()
+	public function test_get_cheapest_products_action(): void
 	{
-		$repository = $this->createRepositoryMock();
-		$action = new GetCheapestProductsAction($repository);
+		$action = $this->app->make(GetCheapestProductsAction::class);
 		$response = $action->execute();
 
-		$this->assertInstanceOf(GetCheapestProductsResponse::class, $response);
 		$this->assertCount(3, $response->getProducts());
 
 		$cheapest = self::getCheapestProducts();
@@ -69,13 +72,10 @@ class Task1Test extends TestCase
 		}
 	}
 
-	public function test_get_most_popular_product_action()
+	public function test_get_most_popular_product_action(): void
 	{
-		$repository = $this->createRepositoryMock();
-		$action = new GetMostPopularProductAction($repository);
+		$action = $this->app->make(GetMostPopularProductAction::class);
 		$response = $action->execute();
-
-		$this->assertInstanceOf(GetMostPopularProductResponse::class, $response);
 
 		$product = $response->getProduct();
 
@@ -96,11 +96,6 @@ class Task1Test extends TestCase
 			$this->assertNotEmpty($product->getImageUrl());
 			$this->assertNotEmpty($product->getRating());
 		}
-	}
-
-	private function createRepositoryMock(): ProductRepositoryInterface
-	{
-		return new InMemoryProductRepository(self::getProducts());
 	}
 
 	private static function getProducts(): array

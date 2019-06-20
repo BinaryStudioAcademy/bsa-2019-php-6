@@ -8,9 +8,9 @@ use App\Entity\Product;
 
 interface ProductRepositoryInterface
 {
-	/**
-	 * @param Product[] $products
-	 */
+    /**
+     * @param Product[] $products
+     */
     public function __construct(array $products);
 
     /**
