@@ -16,7 +16,7 @@ class Task1Test extends TestCase
 	{
 		parent::setUp();
 		$this->app->bind(ProductRepositoryInterface::class, function () {
-			return new ProductRepository($this->getProducts());
+			return new ProductRepository(self::getProducts());
 		});
 	}
 
