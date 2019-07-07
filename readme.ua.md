@@ -1,4 +1,4 @@
-# Binary Studio Academy 2019 PHP 2019
+# Binary Studio Academy 2019 PHP
 
 ## Домашнє завдання Laravel introduction
 
@@ -8,8 +8,8 @@
 ### Встановлення
 Встановлення показане в робочому середовищі OS Linux:
 ```bash
-git clone https://github.com/BinaryStudioAcademy/bsa-2019-php-laravel-general.git
-cd bsa-2019-php-laravel-general
+git clone git@github.com:BinaryStudioAcademy/bsa-2019-php-6.git
+cd bsa-2019-php-6
 composer install
 cp .env.example .env
 php artisan key:generate
