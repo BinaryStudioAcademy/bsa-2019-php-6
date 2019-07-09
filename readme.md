@@ -42,3 +42,13 @@ php artisan key:generate
 ```bash
 ./vendor/bin/phpunit --testsuite task1
 ```
+
+### Docker
+
+```
+cp .env.example .env
+docker-compose up -d
+docker-compose run --rm composer install
+docker-compose exec php php artisan key:generate
+docker-compose exec php ./vendor/bin/phpunit
+```
